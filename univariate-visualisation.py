@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
-
 import pandas as pd
-
-
 import matplotlib.pyplot as plt
-#from mpl_toolkits.mplot3d import Axes3D
-#import matplotlib as mpl
-#import numpy as np
 import seaborn as sns
 
 
@@ -100,7 +94,6 @@ sns.kdeplot(feature, ax=ax1, shade=True, color='steelblue')
 
 
 
-
 # Bar Plot
 fig = plt.figure(figsize = (6, 4))
 title = fig.suptitle("Wine Quality Frequency", fontsize=14)
@@ -116,4 +109,6 @@ w_q = (list(w_q.index), list(w_q.values))
 ax.tick_params(axis='both', which='major', labelsize=8.5)
 bar = ax.bar(w_q[0], w_q[1], color='steelblue', 
         edgecolor='black', linewidth=1)
-plt.savefig('quality-freq-bar.pdf', format='pdf', dpi=1200)
+#plt.savefig('quality-freq-bar.pdf', format='pdf', dpi=1200)
+
+
