@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 #from mpl_toolkits.mplot3d import Axes3D
 #import matplotlib as mpl
 #import numpy as np
-#import seaborn as sns
+import seaborn as sns
 
 
 white_wine = pd.read_csv('https://raw.githubusercontent.com/dipanjanS/practical-machine-learning-with-python/master/bonus%20content/effective%20data%20visualization/winequality-white.csv', sep=';')
@@ -58,7 +58,7 @@ stats=pd.concat([rs, ws], axis=1, keys=['Red Wine Statistics', 'White Wine Stati
 wines.hist(bins=15, color='steelblue', edgecolor='black', linewidth=0.8,
            xlabelsize=4, ylabelsize=4, grid=True)
 plt.tight_layout()
-plt.savefig('wines-hist.pdf', format='pdf', dpi=1200)
+#plt.savefig('wines-hist.pdf', format='pdf', dpi=1200)
 
 
 # Histogram for a specific feature
@@ -83,9 +83,17 @@ ax.legend()
 
 freq, bins, patches = ax.hist(feature, color='steelblue', bins=25,
                                     edgecolor='black', linewidth=1)
-plt.savefig(feature_name + '-freq.pdf', format='pdf', dpi=1200)
+#plt.savefig(feature_name + '-freq.pdf', format='pdf', dpi=1200)
 
 
+# Density Plot
+# It is a smoothed version of the histogram above and is used in the same concept
+fig = plt.figure(figsize = (6, 4))
+title = fig.suptitle("Sulphates Content in Wine", fontsize=14)
+fig.subplots_adjust(top=0.85, wspace=0.3)
 
-
-
+ax1 = fig.add_subplot(1,1, 1)
+ax1.set_xlabel(feature_name)
+ax1.set_ylabel("Density") 
+sns.kdeplot(feature, ax=ax1, shade=True, color='steelblue')
+#plt.savefig(feature_name + '-density.pdf', format='pdf', dpi=1200)
