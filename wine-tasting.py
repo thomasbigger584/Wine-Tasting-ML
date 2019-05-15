@@ -5,8 +5,6 @@
 https://elitedatascience.com/python-machine-learning-tutorial-scikit-learn
 """
 
-import sklearn
-
 # support for more efficient numerical computation
 import numpy as np
 
