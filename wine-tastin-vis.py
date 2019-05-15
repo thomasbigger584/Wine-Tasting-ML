@@ -97,3 +97,23 @@ ax1.set_xlabel(feature_name)
 ax1.set_ylabel("Density") 
 sns.kdeplot(feature, ax=ax1, shade=True, color='steelblue')
 #plt.savefig(feature_name + '-density.pdf', format='pdf', dpi=1200)
+
+
+
+
+# Bar Plot
+fig = plt.figure(figsize = (6, 4))
+title = fig.suptitle("Wine Quality Frequency", fontsize=14)
+fig.subplots_adjust(top=0.85, wspace=0.3)
+
+ax = fig.add_subplot(1,1, 1)
+ax.set_xlabel("Quality")
+ax.set_ylabel("Frequency") 
+# count the frequency of each quality
+w_q = wines['quality'].value_counts()
+#create x and y axis data
+w_q = (list(w_q.index), list(w_q.values))
+ax.tick_params(axis='both', which='major', labelsize=8.5)
+bar = ax.bar(w_q[0], w_q[1], color='steelblue', 
+        edgecolor='black', linewidth=1)
+plt.savefig('quality-freq-bar.pdf', format='pdf', dpi=1200)
