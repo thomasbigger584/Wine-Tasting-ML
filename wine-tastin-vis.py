@@ -58,7 +58,7 @@ stats=pd.concat([rs, ws], axis=1, keys=['Red Wine Statistics', 'White Wine Stati
 wines.hist(bins=15, color='steelblue', edgecolor='black', linewidth=0.8,
            xlabelsize=4, ylabelsize=4, grid=True)
 plt.tight_layout()
-#plt.savefig('wines-hist.pdf', format='pdf', dpi=1200)
+plt.savefig('wines-hist.pdf', format='pdf', dpi=1200)
 
 
 # Histogram for a specific feature
@@ -66,6 +66,8 @@ feature_name='sulphates'
 feature=wines[feature_name]
 mean=feature.mean()
 std=feature.std()
+std_lower=(mean - std)
+std_higher=(mean + std)
 
 fig = plt.figure(figsize = (6,4))
 title = fig.suptitle(feature_name + " Content in Wine", fontsize=14)
@@ -74,14 +76,14 @@ fig.subplots_adjust(top=0.85, wspace=0.3)
 ax = fig.add_subplot(1, 1, 1)
 ax.set_xlabel(feature_name)
 ax.set_ylabel("Frequency")
-ax.text(x=feature.max(), y=800, s= r'$\mu$ mean='+str(round(mean,2)), fontsize=12,  horizontalalignment='right',)
-ax.axvline(x=mean)
-ax.axvline(x=(mean - std), color='r')
-ax.axvline(x=(mean + std), color='g')
+ax.axvline(x=mean, label= r'$\mu$ mean='+str(round(mean,2)))
+ax.axvline(x=std_lower, color='r', label='srd lower='+str(round(std_lower,2)))
+ax.axvline(x=std_higher, color='g', label='srd higher='+str(round(std_higher,2)))
+ax.legend()
 
 freq, bins, patches = ax.hist(feature, color='steelblue', bins=25,
                                     edgecolor='black', linewidth=1)
-#plt.savefig(feature_name + '-freq.pdf', format='pdf', dpi=1200)
+plt.savefig(feature_name + '-freq.pdf', format='pdf', dpi=1200)
 
 
 
