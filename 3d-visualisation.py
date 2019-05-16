@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from mpl_toolkits.mplot3d import Axes3D
+
 white_wine = pd.read_csv('https://raw.githubusercontent.com/dipanjanS/practical-machine-learning-with-python/master/bonus%20content/effective%20data%20visualization/winequality-white.csv', sep=';')
 red_wine = pd.read_csv('https://raw.githubusercontent.com/dipanjanS/practical-machine-learning-with-python/master/bonus%20content/effective%20data%20visualization/winequality-red.csv', sep=';')
 
@@ -56,7 +58,6 @@ t = fig.suptitle('Wine Attributes Pairwise Plots', fontsize=14)
 #visualizing three continuous, numeric attributes
 # Visualizing 3-D numeric data with Scatter Plots
 # length, breadth and depth
-from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure(figsize=(8, 6))
 ax = Axes3D(fig)
 
@@ -99,5 +100,11 @@ fc = sns.catplot(x="quality", hue="wine_type", col="quality_label",
 
 
 
+# Visualizing 3-D mix data using scatter plots
+# leveraging the concepts of hue for categorical dimension
+jp = sns.pairplot(wines, x_vars=["sulphates"], y_vars=["alcohol"], height=4.5,
+                  hue="wine_type", palette={"red": "#FF9999", "white": "#FFE888"},
+                  plot_kws=dict(edgecolor="k", linewidth=0.5))
+#plt.savefig('categry-plot-colored.pdf', format='pdf', dpi=1200)
 
 
