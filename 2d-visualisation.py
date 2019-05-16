@@ -128,4 +128,9 @@ bar2 = ax2.bar(ww_q[0], ww_q[1], color='white',
 # Multi-bar Plot
 cp = sns.countplot(x="quality", hue="wine_type", data=wines,
                    palette={"red": "#FF9999", "white": "#FFE888"})
-plt.savefig('wine-type-quality-count.pdf', format='pdf', dpi=1200)
+#plt.savefig('wine-type-quality-count.pdf', format='pdf', dpi=1200)
+                   
+                            
+#Visualizing data till two-dimensions is pretty straightforward but starts becoming complex as the 
+#number of dimensions (attributes) start increasing. The reason is because we are bound by the 
+#two-dimensions of our display mediums and our environment.
