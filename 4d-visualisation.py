@@ -61,4 +61,16 @@ ax.set_zlabel('Fixed Acidity')
 plt.savefig('sugar-alcohol-acidity-colored-4d.pdf', format='pdf', dpi=1200)
 
 
+# Visualizing 4-D mix data using bubble plots
+# leveraging the concepts of hue and size
+size = wines['residual sugar']*25
+fill_colors = ['#FF9999' if wt=='red' else '#FFE888' for wt in list(wines['wine_type'])]
+edge_colors = ['red' if wt=='red' else 'orange' for wt in list(wines['wine_type'])]
 
+plt.scatter(wines['fixed acidity'], wines['alcohol'], s=size, 
+            alpha=0.4, color=fill_colors, edgecolors=edge_colors)
+
+plt.xlabel('Fixed Acidity')
+plt.ylabel('Alcohol')
+plt.title('Wine Alcohol Content - Fixed Acidity - Residual Sugar - Type',y=1.05)
+plt.savefig('sugar-alcohol-acidity-bubble-colored-4d.pdf', format='pdf', dpi=1200)
